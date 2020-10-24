@@ -1,11 +1,96 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import string
+import time
+import re, datetime
+import instapy
+import autoit
+import pathlib
 from PIL import Image, ImageDraw, ImageFont
 from matplotlib.pyplot import imshow
 from matplotlib.pyplot import figure
 import numpy as np
 from shutil import copyfile
+from time import gmtime, strftime
+
+def newPost(uname,passwd,post_caption):
+    #try:
+    options = webdriver.ChromeOptions()
+    #options.add_argument('headless')
+    mobile_emulation = {"deviceName": "iPhone 8"}
+    options.add_experimental_option("mobileEmulation", mobile_emulation)
+
+    driver = webdriver.Chrome("./driver/chromedriver", chrome_options=options)
+    driver.set_page_load_timeout(-1)
+    #except Exception as e:
+    #    print(e)
+
+    page="https://www.instagram.com/accounts/login/?hl=en"
+    driver.get(page)
+    time.sleep(4)
+    userID = driver.find_element_by_name("username")
+    #userID.send_keys('covid.times')
+    userID.send_keys(uname)
+    Password = driver.find_element_by_name("password")
+    Password.send_keys(passwd)
+    Password.send_keys(u'\ue007')
+    time.sleep(4)
+    try:
+        Cancel = driver.find_element_by_class_name("aOOlW.HoLwm ")
+        Cancel.click()
+        time.sleep(3)
+    except Exception as e:
+        print(e)
+    try:
+        NotNow = driver.find_element_by_class_name("cmbtv")
+        NotNow.click()
+        time.sleep(3)
+    except Exception as e:
+        print(e)
+    try:
+        Cancel = driver.find_element_by_class_name("aOOlW.HoLwm")
+        Cancel.click()
+        time.sleep(3)
+    except Exception as e:
+        print(e)
+    try:
+        NotNow = driver.find_element_by_class_name("cmbtv")
+        NotNow.click()
+        time.sleep(3)
+    except Exception as e:
+        print(e)
+    try:
+        NotNow = driver.find_element_by_class_name("aOOlW.HoLwm")
+        NotNow.click()
+        time.sleep(3)
+    except Exception as e:
+        print(e)
+    NewPost = driver.find_element_by_class_name("q02Nz._0TPg")
+    NewPost.click()
+    time.sleep(3)
+
+
+    autoit.win_active("Open")
+    time.sleep(2)
+    #ImagePath=str(pathlib.Path().absolute()) + "\\test.png"
+    ImagePath="stat.png"
+    autoit.control_send("Open","Edit1",ImagePath)
+    time.sleep(1)
+    autoit.control_send("Open","Edit1","{ENTER}")
+    time.sleep(3)
+
+    Next = driver.find_element_by_class_name("UP43G")
+    Next.click()
+    time.sleep(3)
+
+    Caption = driver.find_element_by_class_name("_472V_")
+    Caption.send_keys(post_caption)
+
+    Share = driver.find_element_by_class_name("UP43G")
+    Share.click()
+    time.sleep(5)
+
+    driver.close()
 
 def getStat(n):
     try:
