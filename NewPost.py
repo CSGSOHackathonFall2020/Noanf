@@ -129,25 +129,23 @@ def getStat(n):
 
     return ([total_cases, total_death, total_recovered, stat_per_country])
 
-
-
 def createImage(total_cases, total_death, total_recovered, stat_per_country):
 
     img = Image.open('sample.png')
     fnt = ImageFont.truetype('Arial.ttf', 50)
     texts = ImageDraw.Draw(img)
 
-    texts.text((130,260), total_cases, font=fnt, fill=(255, 42, 42))
-    texts.text((130,460), total_death, font=fnt, fill=(128, 128, 128))
-    texts.text((130,660), total_recovered, font=fnt, fill=(89, 131, 29))
+    texts.text((70,290), total_cases, font=fnt, fill=(255, 42, 42))
+    texts.text((70,415), total_death, font=fnt, fill=(128, 128, 128))
+    texts.text((70,535), total_recovered, font=fnt, fill=(89, 131, 29))
 
     stat_day = time.strftime("%A", time.gmtime())
     stat_date = time.strftime("%d %b %Y", time.gmtime())
     stat_time = time.strftime("%I:%M\n  %p", time.gmtime())
 
-    texts.text((440,175), stat_day, font=ImageFont.truetype('Arial.ttf', 40), fill=(80, 80, 80))
-    texts.text((440,230), stat_date, font=ImageFont.truetype('Arial.ttf', 24), fill=(80, 80, 80))
-    texts.text((660,190), stat_time, font=ImageFont.truetype('Arial.ttf', 24), fill=(80, 80, 80))
+    texts.text((30,205), stat_day, font=ImageFont.truetype('Arial.ttf', 30), fill=(80, 80, 80))
+    texts.text((190,205), stat_date, font=ImageFont.truetype('Arial.ttf', 30), fill=(80, 80, 80))
+    #texts.text((660,190), stat_time, font=ImageFont.truetype('Arial.ttf', 24), fill=(80, 80, 80))
 
     texts.text((410,310), "Country", font=ImageFont.truetype('Arial.ttf', 17), fill=(40, 40, 40))
     texts.text((530,300), "Total\ncases", font=ImageFont.truetype('Arial.ttf', 17), fill=(40, 40, 40))
