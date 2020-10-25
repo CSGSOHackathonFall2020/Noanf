@@ -20,3 +20,5 @@ The following packages are also used in this project:
 - matplotlib
 
 
+## How to run
+For running this program, you need to execute ```python NewPost.py```.
