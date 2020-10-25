@@ -1,5 +1,5 @@
 # CovInsta!
-The CovInsta is a robot that posts the latest statistics of Covid to Instagram!
+The CovInsta is a robot that posts the latest statistics of Covid to Instagram! Here is a sample post: https://www.instagram.com/p/CGwPLHDFquU/
 
 ## Requirements
 CovInsta is compatible with Windows 10.
