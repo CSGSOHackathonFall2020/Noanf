@@ -182,6 +182,28 @@ def createImage(total_cases, total_death, total_recovered, stat_per_country):
     img.save('stat.png')
 
     
+    
+    
+def SaveToCSV(total_cases, total_death, total_recovered):
+    total_cases=total_cases.replace(",", "")
+    total_death=total_death.replace(",", "")
+    total_recovered=total_recovered.replace(",", "")
+
+    curr_date = time.strftime("%Y-%m-%d", time.gmtime())
+    with open('cases.csv',newline='') as f:
+        r = csv.reader(f)
+        data = [line for line in r]
+    data.pop(0)
+    if(data[0][0] == curr_date):
+        data.pop(0)
+    with open('cases.csv','w',newline='') as f:
+        w = csv.writer(f)
+        w.writerow(["Date","Case","Death","Recovered"])
+        w.writerow([curr_date,total_cases,total_death,total_recovered])
+        w.writerows(data)
+
+        
+        
 [total_cases, total_death, total_recovered, stat_per_country] = getStat(30)
 #print(stat_per_country)
 createImage(total_cases, total_death, total_recovered, stat_per_country)
