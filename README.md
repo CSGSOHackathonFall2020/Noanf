@@ -33,3 +33,6 @@ You need to change the word **Masoud** with your Windows user account.
 In the last line, **newPost()** gets three parameters that are your Instagram username, password, and the comments for the new post.
 
 
+## How CovInsta works?
+This program scrapes the websites that contain the statistics of Covid, then stores them locally and creates visualizations. Then, it simulates a mobile device in order to send a new post to instagram which contains the visualizations.
+
