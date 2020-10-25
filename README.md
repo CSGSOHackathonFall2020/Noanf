@@ -22,10 +22,14 @@ The following packages are also used in this project:
 
 
 ## How to run
-For running this program, you need to execute **NewPost.py**. Before that, open this file and scroll down to the last two lines of the program. You need to change the word **Masoud** with your Windows user account.
-In the last line, newPost() gets three parameters that are your Instagram username, password, and the comments for the new post.
+For running this program, you need to execute **NewPost.py**. Before that, open this file and scroll down to the last two lines of the program. 
 
 ```python
 copyfile('stat.png', 'c://Users/Masoud/stat.png')
 newPost('isuhack','isu123',"#hackathon #IowaStateUniversity #Covid")
 ```
+
+You need to change the word **Masoud** with your Windows user account.
+In the last line, **newPost()** gets three parameters that are your Instagram username, password, and the comments for the new post.
+
+
