@@ -243,6 +243,7 @@ def SaveToCSV(total_cases, total_death, total_recovered):
 
 
 [total_cases, total_death, total_recovered, stat_per_country] = getStat(30)
+
 SaveToCSV(total_cases, total_death, total_recovered)
 AddPlot()
 createImage(total_cases, total_death, total_recovered, stat_per_country)
