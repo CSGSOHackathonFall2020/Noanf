@@ -12,6 +12,7 @@ from matplotlib.pyplot import figure
 import numpy as np
 from shutil import copyfile
 from time import gmtime, strftime
+import csv
 
 def newPost(uname,passwd,post_caption):
     #try:
@@ -20,7 +21,7 @@ def newPost(uname,passwd,post_caption):
     mobile_emulation = {"deviceName": "iPhone 8"}
     options.add_experimental_option("mobileEmulation", mobile_emulation)
 
-    driver = webdriver.Chrome("./driver/chromedriver", chrome_options=options)
+    driver = webdriver.Chrome("./chromedriver", chrome_options=options)
     driver.set_page_load_timeout(-1)
     #except Exception as e:
     #    print(e)
@@ -96,7 +97,7 @@ def getStat(n):
     try:
         options = webdriver.ChromeOptions()
         options.add_argument('headless')
-        driver = webdriver.Chrome("./driver/chromedriver", chrome_options=options)
+        driver = webdriver.Chrome("./chromedriver", chrome_options=options)
         driver.set_page_load_timeout(-1)
     except Exception as e:
         print(e)
@@ -181,9 +182,9 @@ def createImage(total_cases, total_death, total_recovered, stat_per_country):
 
     img.save('stat.png')
 
-    
-    
-    
+
+
+
 def SaveToCSV(total_cases, total_death, total_recovered):
     total_cases=total_cases.replace(",", "")
     total_death=total_death.replace(",", "")
@@ -202,8 +203,11 @@ def SaveToCSV(total_cases, total_death, total_recovered):
         w.writerow([curr_date,total_cases,total_death,total_recovered])
         w.writerows(data)
 
-        
-        
+
+
+
 [total_cases, total_death, total_recovered, stat_per_country] = getStat(30)
-#print(stat_per_country)
 createImage(total_cases, total_death, total_recovered, stat_per_country)
+SaveToCSV(total_cases, total_death, total_recovered)
+copyfile('stat.png', 'c://Users/Masoud/stat.png')
+newPost('isuhack','isu123',"#hackathon #IowaStateUniversity #Covid")
