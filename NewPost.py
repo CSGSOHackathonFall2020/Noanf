@@ -180,3 +180,8 @@ def createImage(total_cases, total_death, total_recovered, stat_per_country):
 
 
     img.save('stat.png')
+
+    
+[total_cases, total_death, total_recovered, stat_per_country] = getStat(30)
+#print(stat_per_country)
+createImage(total_cases, total_death, total_recovered, stat_per_country)
