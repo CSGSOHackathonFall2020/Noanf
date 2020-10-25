@@ -6,9 +6,6 @@ import re, datetime
 import instapy
 import autoit
 import pathlib
-from PIL import Image, ImageDraw, ImageFont
-from matplotlib.pyplot import imshow
-from matplotlib.pyplot import figure
 import numpy as np
 from shutil import copyfile
 from time import gmtime, strftime
@@ -131,8 +128,11 @@ def getStat(n):
     return ([total_cases, total_death, total_recovered, stat_per_country])
 
 def createImage(total_cases, total_death, total_recovered, stat_per_country):
+    from PIL import Image, ImageDraw, ImageFont
+    from matplotlib.pyplot import imshow
+    from matplotlib.pyplot import figure
 
-    img = Image.open('sample.png')
+    img = Image.open('stat.png')
     fnt = ImageFont.truetype('Arial.ttf', 50)
     texts = ImageDraw.Draw(img)
 
@@ -183,6 +183,42 @@ def createImage(total_cases, total_death, total_recovered, stat_per_country):
     img.save('stat.png')
 
 
+def AddPlot():
+    from PIL import Image, ImageDraw, ImageFont
+    import csv
+    import matplotlib.pyplot as plt
+    plt.rcParams.update({'font.size': 20})
+
+    with open('cases.csv',newline='') as f:
+        r = csv.reader(f)
+        data = [line for line in r]
+
+    data.pop(0)
+    if (len(data)<=30):
+        reads = len(data)
+    else:
+        reads = 30
+    dates=[]
+    cases=[]
+    deaths=[]
+    for i in range(reads-1, -1,-1):
+        print(i, int(data[i][1]))
+        dates.append(str(i))
+        cases.append(int(data[i][1]))
+        deaths.append(int(data[i][2]))
+
+    #dates, cases = zip(*sorted(zip(dates, cases)))
+    plt.plot(dates, cases , c='red', label='Cases',linewidth=10.0)
+    plt.savefig('plt.png', bbox_inches='tight')
+
+    img1 = Image.open('sample.png')
+    img2 = Image.open('plt.png')
+    size = 370,170
+    img2 = img2.resize(size,Image.ANTIALIAS)
+    img1.paste(img2, (10,625))
+    img1.save('stat.png')
+
+
 
 
 def SaveToCSV(total_cases, total_death, total_recovered):
@@ -207,7 +243,8 @@ def SaveToCSV(total_cases, total_death, total_recovered):
 
 
 [total_cases, total_death, total_recovered, stat_per_country] = getStat(30)
-createImage(total_cases, total_death, total_recovered, stat_per_country)
 SaveToCSV(total_cases, total_death, total_recovered)
+AddPlot()
+createImage(total_cases, total_death, total_recovered, stat_per_country)
 copyfile('stat.png', 'c://Users/Masoud/stat.png')
 newPost('isuhack','isu123',"#hackathon #IowaStateUniversity #Covid")
