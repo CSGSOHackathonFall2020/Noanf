@@ -1,2 +1,5 @@
-# Noanf
-CSGSO_Hackathon_Fall_2020
+# Covinsta
+The Covinsta is a robot that posts the latest statistics of Covid to Instagram!
+
+##Requirements
+
