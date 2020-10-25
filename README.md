@@ -21,4 +21,12 @@ The following packages are also used in this project:
 
 
 ## How to run
-For running this program, you need to execute ```python NewPost.py```.
+For running this program, you need to execute **NewPost.py**. Before that, open this file and scroll down to the end of the file:
+```python
+[total_cases, total_death, total_recovered, stat_per_country] = getStat(30)
+SaveToCSV(total_cases, total_death, total_recovered)
+AddPlot()
+createImage(total_cases, total_death, total_recovered, stat_per_country)
+copyfile('stat.png', 'c://Users/Masoud/stat.png')
+newPost('isuhack','isu123',"#hackathon #IowaStateUniversity #Covid")
+```
