@@ -3,6 +3,7 @@ The CovInsta is a robot that posts the latest statistics of Covid to Instagram!
 
 Here is a sample post: https://www.instagram.com/p/CGwPLHDFquU/
 
+
 ## Requirements
 CovInsta is compatible with Windows 10.
 This program uses Selenium package, which needs Chrome browswer to be installed and the version of "chromedriver.exe" file must match the version of your chrome. The version that is used here is **ChromeDriver 86.0.4240.22**. Please download the proper version at: https://chromedriver.chromium.org/downloads
