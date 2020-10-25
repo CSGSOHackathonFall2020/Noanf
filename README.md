@@ -31,8 +31,10 @@ newPost('isuhack','isu123',"#hackathon #IowaStateUniversity #Covid")
 
 You need to change the word **Masoud** with your Windows user account.
 In the last line, **newPost()** gets three parameters that are your Instagram username, password, and the comments for the new post.
-
+The best way to use this program is to schedule **batch.bat** to be run daily.
 
 ## How CovInsta works?
 This program scrapes the websites that contain the statistics of Covid, then stores them locally and creates visualizations. Then, it simulates a mobile device in order to send a new post to instagram which contains the visualizations.
 
+## What's next?
+In the next step, CovInsta will do further analysis on the records and try to make short-term predictions using LSTM classifier.
