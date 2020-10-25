@@ -22,7 +22,7 @@ The following packages are also used in this project:
 
 
 ## How to run
-For running this program, you need to execute **NewPost.py**. Before that, open this file and scroll down to the last two lines of the program. 
+For running this program, you need to run **NewPost.py**. Before that, open this file and scroll down to the last two lines of the program. 
 
 ```python
 copyfile('stat.png', 'c://Users/Masoud/stat.png')
